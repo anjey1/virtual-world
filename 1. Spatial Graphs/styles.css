@@ -9,5 +9,9 @@ h1 {
 }
 
 #myCanvas {
-   background-color: #2a5;
+   background-color: #2a55;
+   background-image: url("images/background.webp");
+   background-size: cover; /* or any other size property you prefer */
+   background-repeat: no-repeat;
+   background-position: center;
 }

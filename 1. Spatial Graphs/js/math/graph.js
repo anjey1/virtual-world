@@ -4,6 +4,7 @@ class Graph {
       this.segments = segments;
    }
 
+   // Point
    addPoint(point) {
       this.points.push(point);
    }
@@ -28,6 +29,8 @@ class Graph {
       this.points.splice(this.points.indexOf(point), 1);
    }
 
+
+   // Segment
    addSegment(seg) {
       this.segments.push(seg);
    }
@@ -58,6 +61,7 @@ class Graph {
       return segs;
    }
 
+   // General
    dispose() {
       this.points.length = 0;
       this.segments.length = 0;

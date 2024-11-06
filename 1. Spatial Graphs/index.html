@@ -9,28 +9,57 @@
       <canvas id="myCanvas"></canvas>
       <div id="controls">
       </div>
-
+      <script src="types.js"></script>
+      <script src="js/math/utils.js"></script>
+      <script src="js/graphEditor.js"></script>
       <script src="js/math/graph.js"></script>
       <script src="js/primitives/point.js"></script>
       <script src="js/primitives/segment.js"></script>
       <script>
+         
          myCanvas.width = 600;
          myCanvas.height = 600;
-
-         const ctx = myCanvas.getContext("2d");
-
-         const p1 = new Point(200, 200);
-         const p2 = new Point(500, 200);
-         const p3 = new Point(400, 400);
-         const p4 = new Point(100, 300);
+         
+         /** @type {CanvasRenderingContext2D} */
+         let ctx = myCanvas.getContext("2d");
+         
+         const p1 = new Point(150, 150);
+         const p2 = new Point(300, 100);
+         const p3 = new Point(450, 200);
+         const p4 = new Point(470, 350);
+         const p5 = new Point(330, 500);
+         const p6 = new Point(140, 450);
+         const p7 = new Point(100, 300);
 
          const s1 = new Segment(p1, p2);
-         const s2 = new Segment(p1, p3);
-         const s3 = new Segment(p1, p4);
-         const s4 = new Segment(p2, p3);
+         const s2 = new Segment(p2, p3);
+         const s3 = new Segment(p3, p4);
+         const s4 = new Segment(p4, p5);
+         const s5 = new Segment(p5, p6);
+         const s6 = new Segment(p6, p7);
+         const s7 = new Segment(p7, p1);
 
-         const graph = new Graph([p1, p2, p3, p4], [s1, s2, s3, s4]);
-         graph.draw(ctx);
+         const graph = new Graph([p1, p2, p3, p4, p5, p6 ,p7], [s1, s2, s3, s4, s5, s6, s7]);
+
+ 
+         const graphEditor = new GraphEditor(myCanvas, graph)
+
+         animate();
+
+         function animate(){
+            ctx.clearRect(
+               0,
+               0,
+               myCanvas.width,
+               myCanvas.height
+            );
+            graphEditor.display();
+
+            // tells browser to call a user-supplied callback function 
+            // before the next repaint => animate
+            requestAnimationFrame(animate); 
+         }
+
       </script>
    </body>
 </html>
